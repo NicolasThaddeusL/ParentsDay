@@ -445,6 +445,10 @@ def main(window):
             goose.loop(FPS)
             handle_move(duck, goose, objects)
             draw(window, background, bg_image, duck, goose, objects, offset_x)
+            if (((duck.rect.right - offset_x >= WIDTH - scroll_area_width) and duck.x_vel > 0) or ((duck.rect.left - offset_x <= scroll_area_width) and duck.x_vel < 0)):
+                offset_x += duck.x_vel
+            if (((duck.rect.bottom - offset_y >= HEIGHT - scroll_area_height) and duck.y_vel > 0) or ((duck.rect.top - offset_y <= scroll_area_height) and duck.y_vel < 0)):
+                offset_y += (duck.y_vel * 1)
                 
         pygame.quit()
         quit()
